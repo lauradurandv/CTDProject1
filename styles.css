@@ -1,9 +1,89 @@
-body {
-  background-color: powderblue;
+/* All elements styling */
+* {
+  margin: 0;
+  padding: 0;
+  font-family: Arial, Helvetica;
 }
+
+/* Website header */
+header{
+  display: flex;
+  flex-direction: column;
+  background-color: #1b4de4;
+  font-size: 300%;
+  justify-content: space-around;
+  align-items: center;
+  padding: 20px 50px;
+  box-shadow: 0 1px 8px #ddd;
+}
+
+/* Heading styles */
 h1 {
-  color: blue;
+  color: white;
+  font-style: italic;
+  font-weight: bolder;
 }
-p {
-  color: red;
+
+h2{
+  background-color:#87CEFA ;
+  font-style: italic;
+  justify-content: center;
 }
+
+/* Navagation styling */
+nav {
+  display: flex;
+  flex-direction: column;
+  background-color: #039;
+  height: max-content;
+}
+
+nav > ul{
+  display: flex;
+  flex-direction: row;
+  background-color: #039;
+  list-style: none;
+}
+
+nav > ul > li {
+  list-style: none;
+  display: inline-block;
+  padding: 3%;
+}
+
+nav > ul > li > a {
+  text-decoration: none;
+  color: white;
+  transition: all 0.3s ease 0s;
+  font-weight: bold;
+}
+
+nav > ul > li > a:hover {
+  color: #CBF55C;
+  font-style: italic;
+}
+
+/* Body styling */
+body {
+  background-color: white;
+}
+
+/* ID styling : Single html elements*/
+#errorContainer {
+  background-color: #87CEFA;
+} 
+
+#errorContainer > h2 {
+  text-align: center;
+}
+
+#forecastContainer {
+  display: flex;
+  flex-direction: row;
+  background-color: #87CEFA;
+  justify-content: space-evenly;
+  padding-top: 2%;
+  padding-bottom: 2%;
+}
+
+/* Class Styles: Multiple html elements */
