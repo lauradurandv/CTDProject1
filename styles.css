@@ -30,6 +30,22 @@ h2{
   justify-content: center;
 }
 
+h4{
+  background-color: white;
+  color:#039;
+  font-weight: bolder;
+  font-size: larger;
+  padding: 1%;
+}
+
+/* Paragraph styling */
+p{
+  color: black;
+  font-weight: lighter;
+  font-size: large;
+  font-style: italic;
+}
+
 /* Navagation styling */
 nav {
   display: flex;
@@ -79,11 +95,19 @@ body {
 
 #forecastContainer {
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   background-color: #87CEFA;
   justify-content: space-evenly;
   padding-top: 2%;
   padding-bottom: 2%;
 }
 
+
 /* Class Styles: Multiple html elements */
+div.dataContainer{
+  display:flex;
+  flex-direction: column;
+  align-content: center;
+  background-color:#87CEFA;
+  padding: 1%;
+}
