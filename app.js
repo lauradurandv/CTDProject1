@@ -1,6 +1,6 @@
 
 //Parameters: Using constant because dont wany variables to change
-const apiKey = '8b45b7add1d520d749b163daf2502448';
+const apiKey = 'private key';
 const lat = '30.07';
 const lon = '-78.45';
 const units = 'imperial';
@@ -26,13 +26,39 @@ async function fetchForecast(){
 
 }
 
+
+async function dataUICompnent(weekData){
+  let html = '';
+  for (const element of weekData) {
+    let mainTemp = element.main.temp;
+    let weatherDescription = element.weather[0].description;
+    let dateAndTime = element.dt_txt;
+    let index = dateAndTime.indexOf(" ");
+    let date = new Date(dateAndTime).toDateString();
+    let time = new Date(dateAndTime).toLocaleTimeString('en-US', { hour: 'numeric', minute: 'numeric', hour12: true }); 
+
+    let htmlSegment = ` <div class="dataContainer">
+                        <h4> ${date}<h4>
+                        <p>Time: ${time} </p>
+                        <p>Description: ${weatherDescription} </p>
+                        <p>Temperature: ${mainTemp} F </p>
+                        </div>
+    `
+    html += htmlSegment;
+
+    let container = document.querySelector('#forecastContainer');
+    container.innerHTML = html;
+
+  }
+
+}
+
 //fetch forecast returns a response (JSON) object. We must then handle it with then() and catch() errors
 fetchForecast()
 .then( response => {
-  console.log(response.list[0].main.temp);
-  console.log(response.list[0].weather[0].description);
-  console.log(response.list[0].dt_txt);
-  const forecastData = response.list;
+  let forecastData = response.list;
+  dataUICompnent(forecastData);
+
 })
 .catch(error => {
 
@@ -50,7 +76,6 @@ fetchForecast()
   container.innerHTML = html;
 
 })
-
 
 
 
