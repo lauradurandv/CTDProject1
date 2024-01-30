@@ -1,13 +1,56 @@
-
-//Parameters: Using constant because dont wany variables to change
+//Parameters
+// Using constant because dont wany variables to change
 const apiKey = 'private key';
-const lat = '30.07';
-const lon = '-78.45';
 const units = 'imperial';
+//Using let because these valuse can change
+let coordinateForm = document.getElementById("coordForm");
+let lat = '';
+let lon = '';
+
+//Event listener for Coordinate Form
+coordinateForm.addEventListener("submit", (e)=>{
+
+  //prevents default behavior
+  e.preventDefault();
+
+  //gets data from form and put it in an object. Beneficial for larger forms
+  const formData = new FormData(coordinateForm);
+
+  lat = formData.get('latitude');
+  lon = formData.get('longitude');
+
+
+  //fetch forecast returns a response (JSON) object. We must then handle it with then() and catch() errors
+  fetchForecast()
+  .then( response => {
+    let forecastData = response.list;
+    dataUICompnent(forecastData);
+
+  })
+  .catch(error => {
+
+    console.log("An error has occured.");
+
+    let html = '';
+    let htmlSegment = `<div id="errorContainer">
+                          <h2>Error</h2>
+                          <p>We apologize for the inconvenience, we are currently unable to load the data. Please try again later.</p>
+                        </div>`;
+
+    html += htmlSegment;
+
+    let container = document.querySelector('#forecastContainer');
+    container.innerHTML = html;
+
+  })
+
+
+})
+
 
 //async function to fetch forecast. Async allows the function to return a promise
 async function fetchForecast(){
-
+  
   //await is used to wait for a promise. Can only be used inside async func.
   const result = await fetch(`http://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&units=${units}&appid=${apiKey}`, 
   {
@@ -53,29 +96,6 @@ async function dataUICompnent(weekData){
 
 }
 
-//fetch forecast returns a response (JSON) object. We must then handle it with then() and catch() errors
-fetchForecast()
-.then( response => {
-  let forecastData = response.list;
-  dataUICompnent(forecastData);
-
-})
-.catch(error => {
-
-  console.log("An error has occured.");
-
-  let html = '';
-  let htmlSegment = `<div id="errorContainer">
-                        <h2>Error</h2>
-                        <p>We apologize for the inconvenience, we are currently unable to load the data. Please try again later.</p>
-                      </div>`;
-
-  html += htmlSegment;
-
-  let container = document.querySelector('#forecastContainer');
-  container.innerHTML = html;
-
-})
 
 
 
