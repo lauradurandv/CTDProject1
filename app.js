@@ -1,6 +1,6 @@
 //Parameters
 // Using constant because dont wany variables to change
-const apiKey = '8b45b7add1d520d749b163daf2502448';
+const apiKey = 'private key';
 const units = 'imperial';
 //Using let because these valuse can change
 let coordinateForm = document.getElementById("coordForm");
