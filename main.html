@@ -28,6 +28,21 @@
 
   <!-- This is an external script and the async allows scripts to be downloaded without blocking browser-->
   <script src="app.js" async></script>
+  <div>
+  <p>Please enter the latitude and longitude coordinates of the location you want to recieve weather reports from.</p>
+  <br>
+  <form id="coordForm">
+    <label for="latitude">Latitude:</label>
+    <br>
+    <input type="text" id="latitude" name="latitude" value="30.07">
+    <br>
+    <label for="longitude">Longitude:</label>
+    <br>
+    <input type="text" id="longitude" name="longitude" value="-78.45">
+    <br>
+    <button type="submit">Submit</button>
+  </form>
+  </div>
   <div id="forecastContainer">
   </div>
   
